@@ -1,0 +1,8 @@
+#!/bin/bash
+id=/tmp/id.txt
+if [[ ! -e $id ]];then
+    pactl load-module module-loopback > $id && echo "Ecoute de l'entrée audio"
+else
+    pactl unload-module $(< $id) && rm $id && echo "Fin de l'écoute de l'entrée audio"
+fi
+exit 0
